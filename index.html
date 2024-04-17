@@ -64,7 +64,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             getUserCountry(function(countryCode) {
                 console.log(countryCode);
-                redirectToCountry(countryCode);
+                setTimeout(function() {
+                    redirectToCountry(countryCode);
+                }, 2000);
             });
         });
     </script>
