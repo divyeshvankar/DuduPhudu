@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect Based on Country</title>
+    <style>
+        /* You can add some basic styling if needed */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <p>We'll redirect you based on your country.</p>
+
+    <script>
+        // Function to get user's country using an API
+        function getUserCountry(callback) {
+            // You can replace this URL with any other IP geolocation API
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    callback(data.country);
+                })
+                .catch(error => {
+                    console.error('Error fetching user country:', error);
+                    // In case of error, you can provide a default country code
+                    // callback('US'); // Defaulting to United States if unable to determine country
+                });
+        }
+
+        // Function to redirect based on country
+        function redirectToCountry(countryCode) {
+            switch(countryCode) {
+                case 'US':
+                    window.location.href = 'https://www.duduphudu.store/'; // Replace 'https://example.com/us' with your US link
+                    break;
+                case 'IN':
+                    window.location.href = 'https://duduphudu.blinkstore.in/shop'; // Replace 'https://example.com/europe' with your Europe link
+                    break;
+                case 'GB':
+                case 'DE':
+                case 'FR':
+                case 'IT':
+                case 'ES':
+                case 'NL':
+                case 'SE':
+                case 'PL':
+                    window.location.href = 'https://duduphudueurope.store/'; // Replace 'https://example.com/europe' with your Europe link
+                    break;
+                               // Add more cases for other countries in Europe as needed
+                default:
+                    window.location.href = 'https://duduphudu.blinkstore.in/shop'; // Replace 'https://example.com/other' with your default link
+            }
+        }
+
+        // Call functions when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            getUserCountry(function(countryCode) {
+                console.log(countryCode);
+                redirectToCountry(countryCode);
+            });
+        });
+    </script>
+</body>
+</html>
