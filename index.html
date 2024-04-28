@@ -39,31 +39,23 @@
         function redirectToCountry(countryCode) {
             switch(countryCode) {
                 case 'US':
-                    window.location.href = 'https://www.duduphudu.store/'; // Replace 'https://example.com/us' with your US link
+                case 'CA':
+                case 'MX':
+                    window.location.href = 'https://www.duduphudu.store/';
                     break;
                 case 'IN':
-                    window.location.href = 'https://duduphudu.blinkstore.in/shop'; // Replace 'https://example.com/europe' with your Europe link
+                    window.location.href = 'https://duduphudu.blinkstore.in/shop';
                     break;
-                case 'GB':
-                case 'DE':
-                case 'FR':
-                case 'IT':
-                case 'ES':
-                case 'NL':
-                case 'SE':
-                case 'PL':
-                    window.location.href = 'https://duduphudueurope.store/'; // Replace 'https://example.com/europe' with your Europe link
-                    break;
-                               // Add more cases for other countries in Europe as needed
                 default:
-                    window.location.href = 'https://duduphudu.blinkstore.in/shop'; // Replace 'https://example.com/other' with your default link
+                    window.location.href = 'https://duduphudueurope.store/';
             }
         }
+
 
         // Call functions when the page loads
         document.addEventListener('DOMContentLoaded', function() {
             getUserCountry(function(countryCode) {
-                console.log(countryCode);
+                // console.log(countryCode);
                 setTimeout(function() {
                     redirectToCountry(countryCode);
                 }, 1500);
